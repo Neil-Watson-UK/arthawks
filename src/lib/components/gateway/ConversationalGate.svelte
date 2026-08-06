@@ -37,23 +37,38 @@
 			theme: 'spaces',
 			eyebrow: 'Spaces',
 			label: 'I host a room',
-			blurb: 'Why host art: turn walls into a living gallery.'
+			blurb: 'Match local artists to your walls. Guests linger, scan, and buy.'
 		},
 		{
 			type: 'artist',
 			theme: 'art',
 			eyebrow: 'Art',
 			label: 'I make the work',
-			blurb: 'Why exhibit: hang where people already gather.'
+			blurb: 'Hang where people already gather — real eyes, and a clear path to a sale.'
 		},
 		{
 			type: 'buyer',
 			theme: 'people',
 			eyebrow: 'People',
 			label: 'I’m exploring',
-			blurb: 'Follow the pulse of art across the city.'
+			blurb: 'Find hung work on the map or a wall QR. Buy it, collect it there.'
 		}
 	];
+
+	const steps = [
+		{
+			label: 'Hang',
+			body: 'Artists and venues match. Work goes up in cafés, bars, hotels, and neighbourhood rooms.'
+		},
+		{
+			label: 'Discover',
+			body: 'Explorers find it on the city map, in a room, or by scanning a wall label.'
+		},
+		{
+			label: 'Buy & collect',
+			body: 'Pay at the door, get a pickup code, and take the piece home from the venue.'
+		}
+	] as const;
 
 	function toggleStyle(style: ArtStyle): void {
 		if (selectedStyles.includes(style)) {
@@ -170,9 +185,10 @@
 					<ArtHawksLogo variant="nav" onDark class="gateway__logo" />
 				</span>
 			</h1>
-			<p class="gateway__title">Opening spaces. Connecting people.</p>
+			<p class="gateway__title">The city is the gallery.</p>
 			<p class="gateway__lede">
-				Art for everyday life: rooms, walls, and encounters waiting to be noticed.
+				Everyday rooms — cafés, bars, hotels, neighbourhood spaces — hang original art. Find it on
+				the wall or the map, buy it, and collect it there.
 			</p>
 		</header>
 
@@ -197,6 +213,31 @@
 			<a href="/login">Sign in</a>.
 		</p>
 	</div>
+
+	<section class="gateway__premise" aria-labelledby="gateway-premise-title">
+		<div class="gateway__premise-inner">
+			<header class="gateway__premise-head">
+				<p class="gateway__premise-kicker">The premise</p>
+				<h2 id="gateway-premise-title" class="gateway__premise-title">
+					Not another feed. A distributed gallery.
+				</h2>
+				<p class="gateway__premise-lede">
+					Artists hang work in everyday rooms. Venues host living walls. Explorers discover, buy,
+					and collect — so a glance on a café wall can become a piece you take home.
+				</p>
+			</header>
+
+			<ol class="gateway__steps">
+				{#each steps as step, index (step.label)}
+					<li class="gateway__step" style="--step-i: {index}">
+						<span class="gateway__step-index" aria-hidden="true">{index + 1}</span>
+						<p class="gateway__step-label">{step.label}</p>
+						<p class="gateway__step-body">{step.body}</p>
+					</li>
+				{/each}
+			</ol>
+		</div>
+	</section>
 
 	<div class="gateway__atelier">
 		<div class="gateway__atelier-inner">
@@ -429,13 +470,13 @@
 		line-height: 1.12;
 		letter-spacing: -0.03em;
 		color: var(--wall);
-		max-width: 14ch;
+		max-width: 16ch;
 		animation: rise 760ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both;
 	}
 
 	.gateway__lede {
 		margin: 1rem 0 0;
-		max-width: 32ch;
+		max-width: 42ch;
 		font-size: clamp(0.98rem, 2.8vw, 1.08rem);
 		line-height: 1.55;
 		color: rgb(232 228 218 / 0.72);
@@ -546,6 +587,101 @@
 		font-weight: 600;
 		text-decoration: none;
 		border-bottom: 1px solid rgb(212 163 90 / 0.35);
+	}
+
+	.gateway__premise {
+		position: relative;
+		padding: 0 1.25rem 3.5rem;
+		background:
+			linear-gradient(180deg, transparent 0%, rgb(14 24 31 / 0.55) 12%, rgb(14 24 31 / 0.92) 100%);
+		color: var(--wall);
+	}
+
+	.gateway__premise-inner {
+		width: min(100%, 58rem);
+		margin: 0 auto;
+		padding-top: 0.5rem;
+	}
+
+	.gateway__premise-head {
+		max-width: 38rem;
+		margin-bottom: 2rem;
+		text-align: left;
+	}
+
+	.gateway__premise-kicker {
+		margin: 0;
+		font-size: 0.625rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--pulse);
+	}
+
+	.gateway__premise-title {
+		margin: 0.55rem 0 0;
+		font-family: var(--font-display, 'Fraunces', Georgia, serif);
+		font-size: clamp(1.45rem, 3.8vw, 1.95rem);
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+	}
+
+	.gateway__premise-lede {
+		margin: 0.85rem 0 0;
+		max-width: 48ch;
+		font-size: 0.98rem;
+		line-height: 1.55;
+		color: rgb(232 228 218 / 0.68);
+	}
+
+	.gateway__steps {
+		display: grid;
+		gap: 1rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.gateway__step {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto auto;
+		column-gap: 0.9rem;
+		row-gap: 0.25rem;
+		padding: 1.1rem 0 1.15rem;
+		border-top: 1px solid rgb(232 228 218 / 0.12);
+		animation: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) calc(80ms + var(--step-i, 0) * 70ms) both;
+	}
+
+	.gateway__step-index {
+		grid-row: 1 / span 2;
+		align-self: start;
+		margin-top: 0.2rem;
+		font-family: var(--font-display, 'Fraunces', Georgia, serif);
+		font-size: 1.15rem;
+		font-weight: 500;
+		line-height: 1;
+		color: var(--pulse);
+		opacity: 0.85;
+	}
+
+	.gateway__step-label {
+		margin: 0;
+		font-family: var(--font-display, 'Fraunces', Georgia, serif);
+		font-size: 1.15rem;
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+		color: var(--wall);
+	}
+
+	.gateway__step-body {
+		margin: 0;
+		max-width: 40ch;
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: rgb(232 228 218 / 0.62);
 	}
 
 	.gateway__atelier {
@@ -746,6 +882,30 @@
 			text-align: left;
 		}
 
+		.gateway__steps {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+
+		.gateway__step {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto auto;
+			padding: 0;
+			border-top: none;
+			border-left: 1px solid rgb(232 228 218 / 0.12);
+			padding-left: 1.25rem;
+		}
+
+		.gateway__step:first-child {
+			border-left: none;
+			padding-left: 0;
+		}
+
+		.gateway__step-index {
+			grid-row: auto;
+			margin-bottom: 0.65rem;
+		}
+
 		.gateway__panel--a {
 			left: 7%;
 			top: 14%;
@@ -762,6 +922,10 @@
 
 		.gateway__threshold {
 			gap: 3rem;
+			padding-bottom: 4.5rem;
+		}
+
+		.gateway__premise {
 			padding-bottom: 4.5rem;
 		}
 	}
@@ -783,6 +947,7 @@
 		.gateway__lede,
 		.gateway__triad,
 		.gateway__hint,
+		.gateway__step,
 		.gateway__glow,
 		.gateway__panel,
 		.gateway__pulse {

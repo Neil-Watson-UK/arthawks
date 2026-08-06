@@ -64,7 +64,7 @@
 	<title>Art Hawks</title>
 	<meta
 		name="description"
-		content="Opening spaces. Connecting people. Art for everyday life."
+		content="Art Hawks turns everyday rooms into a city-wide gallery — discover original art on café and bar walls, buy it, and collect it there."
 	/>
 </svelte:head>
 
