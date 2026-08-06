@@ -230,7 +230,7 @@
 
 				<article class="gateway__audience">
 					<p class="gateway__audience-eyebrow">Art lovers</p>
-					<h3 class="gateway__audience-title">Access art in the world around you</h3>
+					<h3 class="gateway__audience-title">Access art that's around you</h3>
 					<p class="gateway__audience-copy">
 						See art in your favourite places and buy it on the spot - no stuffy gallery atmosphere
 						or commissions to worry about, and more of your purchase goes to your favourite artist.
