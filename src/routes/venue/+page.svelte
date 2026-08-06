@@ -41,13 +41,13 @@
 	<div class="venue-dashboard__inner">
 		<div class="venue-dashboard__rule" aria-hidden="true"></div>
 		<p class="venue-dashboard__eyebrow">Venue</p>
-		<h1 class="venue-dashboard__title">Venue Exhibition Hub</h1>
+		<h1 class="venue-dashboard__title">Your walls</h1>
 
 		{#if !isVenue}
 			<div class="identity-guard" role="status">
 				<p class="identity-guard__copy">
 					You are viewing as <strong>{$currentUser.full_name}</strong>. Switch to a venue identity
-					in the header to curate for your walls.
+					in the header to manage your walls.
 				</p>
 				<a
 					class="btn btn--secondary"
@@ -58,8 +58,8 @@
 			</div>
 		{:else}
 			<p class="venue-dashboard__intro">
-				Welcome, <strong>{data.venueName ?? venue?.full_name}</strong>. Set your place on the map,
-				then fill the walls - swipe, curate, or follow the calendar.
+				Welcome, <strong>{data.venueName ?? venue?.full_name}</strong>. Pin yourself on the map,
+				match work that fits, hang it free, and earn 15% when a hung piece sells.
 			</p>
 
 			{#if needsActivation}
@@ -91,8 +91,8 @@
 				<p class="venue-balance__eyebrow">Wall earnings</p>
 				<p class="venue-balance__value">{formatBalance(data.balance?.available_pence ?? 0)}</p>
 				<p class="venue-balance__hint">
-					15% when a hung work sells on your walls · 5% finder’s fee for 30 days after a hang,
-					only if the work isn’t at another venue. Lifetime
+					Free to display. 15% when hung work sells on your walls. 5% finder’s fee for 30 days
+					after a hang if the work isn’t at another venue. Lifetime
 					{formatBalance(data.balance?.lifetime_pence ?? 0)}.
 				</p>
 			</section>
@@ -129,30 +129,30 @@
 				<a class="venue-action venue-action--primary" href={ROUTES.venueSettings}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
 					<span class="venue-action__label">Venue identity</span>
-					<span class="venue-action__hint">Name, postcode, bio, image - for the map & room</span>
+					<span class="venue-action__hint">Name, postcode, bio, and image for the map</span>
 				</a>
 
 				<a class="venue-action" href={ROUTES.venueCalendar}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
 					<span class="venue-action__label">Wall calendar</span>
-					<span class="venue-action__hint">Rotations, busy periods, one-click approvals</span>
+					<span class="venue-action__hint">Rotations, busy periods, approvals</span>
 				</a>
 
 				<a class="venue-action" href={ROUTES.venueSwipe}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
-					<span class="venue-action__label">Self-Curation</span>
+					<span class="venue-action__label">Browse & match</span>
 					<span class="venue-action__hint">Swipe available local works</span>
 				</a>
 
 				<a class="venue-action" href={ROUTES.venueCurate}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
-					<span class="venue-action__label">Curate for Me</span>
-					<span class="venue-action__hint">Style-aware nearby collection</span>
+					<span class="venue-action__label">Curate for me</span>
+					<span class="venue-action__hint">Short brief: count, size, styles</span>
 				</a>
 
 				<a class="venue-action" href={ROUTES.venuePulse}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
-					<span class="venue-action__label">Scan pulse</span>
+					<span class="venue-action__label">Wall activity</span>
 					<span class="venue-action__hint">QR interest, condition, rotation nudges</span>
 				</a>
 
@@ -164,8 +164,8 @@
 
 				<a class="venue-action" href={ROUTES.venuePromote}>
 					<span class="venue-action__rule" aria-hidden="true"></span>
-					<span class="venue-action__label">Output promotion pack</span>
-					<span class="venue-action__hint">QR codes, stories & artist profiles to print</span>
+					<span class="venue-action__label">Print pack</span>
+					<span class="venue-action__hint">QR codes and artist notes for the wall</span>
 				</a>
 			</nav>
 

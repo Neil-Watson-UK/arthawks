@@ -36,22 +36,22 @@
 			type: 'venue',
 			theme: 'spaces',
 			eyebrow: 'Spaces',
-			label: 'I host a room',
-			blurb: 'Why host art: turn walls into a living gallery.'
+			label: 'I run a venue',
+			blurb: 'Fill empty walls. Free to hang. Earn when a piece sells.'
 		},
 		{
 			type: 'artist',
 			theme: 'art',
 			eyebrow: 'Art',
 			label: 'I make the work',
-			blurb: 'Why exhibit: hang where people already gather.'
+			blurb: 'Hang in cafés and rooms people already visit. Keep 70%.'
 		},
 		{
 			type: 'buyer',
 			theme: 'people',
 			eyebrow: 'People',
-			label: 'I’m exploring',
-			blurb: 'Follow the pulse of art across the city.'
+			label: 'I’m looking',
+			blurb: 'Find art on walls near you. Buy it and collect in person.'
 		}
 	];
 
@@ -162,7 +162,7 @@
 		<header class="gateway__hero">
 			<p class="gateway__kicker">
 				<span class="gateway__pulse" aria-hidden="true"></span>
-				A living gallery across the city
+				Original art on Bristol walls
 			</p>
 			<h1 class="gateway__brand">
 				<span class="sr-only">Art Hawks</span>
@@ -170,9 +170,9 @@
 					<ArtHawksLogo variant="nav" onDark class="gateway__logo" />
 				</span>
 			</h1>
-			<p class="gateway__title">Opening spaces. Connecting people.</p>
+			<p class="gateway__title">Art where people already go.</p>
 			<p class="gateway__lede">
-				Art for everyday life: rooms, walls, and encounters waiting to be noticed.
+				Venues hang local work for free. Artists reach real rooms. You can buy it off the wall.
 			</p>
 		</header>
 
@@ -201,39 +201,39 @@
 	<section class="gateway__summary" aria-labelledby="gateway-summary-title">
 		<div class="gateway__summary-inner">
 			<p class="gateway__summary-kicker">Who it’s for</p>
-			<h2 id="gateway-summary-title" class="gateway__summary-title">One city gallery. Three ways in.</h2>
+			<h2 id="gateway-summary-title" class="gateway__summary-title">Three doors. Same city.</h2>
 			<p class="gateway__summary-lede">
-				Art Hawks connects artists, rooms, and people who find art where they already gather.
+				Display free. Earn when hung work sells. Buyers can collect from the wall.
 			</p>
 
 			<div class="gateway__summary-grid">
 				<article class="gateway__audience">
-					<p class="gateway__audience-eyebrow">Artists</p>
-					<h3 class="gateway__audience-title">Hang where life happens</h3>
-					<p class="gateway__audience-copy">
-						Hang in living rooms of the city. See who meets your work. Keep 70% when it sells. Stay
-						visible after the sale.
-					</p>
-					<a class="gateway__audience-link" href="/why/exhibit">Why exhibit</a>
-				</article>
-
-				<article class="gateway__audience">
 					<p class="gateway__audience-eyebrow">Venues</p>
-					<h3 class="gateway__audience-title">Walls with a pulse</h3>
+					<h3 class="gateway__audience-title">Empty walls, zero risk</h3>
 					<p class="gateway__audience-copy">
-						Fill walls with matched local art that fits your brief. Go live on the map. Earn 15% on
-						wall sales (or 5% finder’s fee under the 30-day rules). Staff verify paid pickups with a
-						QR - no app login required.
+						Match local artists to your brief, hang the work, and show up on the map. Free to
+						display. You take 15% when something sells on your wall. Guests pick up paid pieces with
+						a simple QR check.
 					</p>
 					<a class="gateway__audience-link" href="/why/host">Why host</a>
 				</article>
 
 				<article class="gateway__audience">
-					<p class="gateway__audience-eyebrow">Art lovers</p>
-					<h3 class="gateway__audience-title">Access art that's around you</h3>
+					<p class="gateway__audience-eyebrow">Artists</p>
+					<h3 class="gateway__audience-title">Hang where people already are</h3>
 					<p class="gateway__audience-copy">
-						See art in your favourite places and buy it on the spot - no stuffy gallery atmosphere
-						or commissions to worry about, and more of your purchase goes to your favourite artist.
+						No monthly fee. Get into cafés, bars, and rooms that want your work. Keep 70% when it
+						sells. Your QR on the wall is the storefront.
+					</p>
+					<a class="gateway__audience-link" href="/why/exhibit">Why exhibit</a>
+				</article>
+
+				<article class="gateway__audience">
+					<p class="gateway__audience-eyebrow">Art lovers</p>
+					<h3 class="gateway__audience-title">Buy art that's around you</h3>
+					<p class="gateway__audience-copy">
+						See what's hung near you on the map. Buy on the spot and collect from the venue. More of
+						the price goes to the artist, not a gallery cut.
 					</p>
 					<a class="gateway__audience-link" href="/discover">Start exploring</a>
 				</article>
@@ -244,11 +244,9 @@
 	<div class="gateway__atelier">
 		<div class="gateway__atelier-inner">
 			<header class="gateway__atelier-head">
-				<p class="gateway__atelier-kicker">Or describe the feeling</p>
-				<h2 class="gateway__atelier-title">What are you drawn toward?</h2>
+				<h2 class="gateway__atelier-title">Are you an Art Hawk looking for art - get started</h2>
 				<p class="gateway__atelier-copy">
-					Tell us the kind of work that stops you. We’ll shortlist rooms, artists, and pieces that
-					match.
+					A few words or styles is enough. We’ll point you at nearby rooms, artists, and pieces.
 				</p>
 			</header>
 
