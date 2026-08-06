@@ -1,0 +1,17 @@
+[Unit]
+Description=Art Hawks
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/arthawks
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/arthawks/.env
+ExecStart=/usr/bin/node build
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

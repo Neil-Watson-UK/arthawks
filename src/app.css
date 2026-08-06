@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Gallery dusk - spaces, art, people */
+	--color-ink: #0e181f;
+	--color-wall: #e8e4da;
+	--color-chalk: #f3f0e8;
+	--color-ember: #c9652e;
+	--color-pulse: #d4a35a;
+	--color-moss: #2f4f40;
+	--color-sky: #5c7a8a;
+
+	/* Legacy aliases used across the product */
+	--color-cream: #e8e4da;
+	--color-indigo: #0e181f;
+	--color-burnt: #c9652e;
+
+	--font-display: 'Fraunces', Georgia, serif;
+	--font-sans: 'DM Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+	background: var(--color-wall);
+	color: var(--color-ink);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+button {
+	font: inherit;
+}
+
+::selection {
+	background: rgb(201 101 46 / 0.28);
+	color: var(--color-ink);
+}

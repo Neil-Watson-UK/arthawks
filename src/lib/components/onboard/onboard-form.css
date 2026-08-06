@@ -1,0 +1,121 @@
+/* Shared form controls for /onboard/* registration pages */
+.onboard-form {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.onboard-form__row {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.onboard-form label,
+.onboard-form fieldset {
+	display: grid;
+	gap: 0.35rem;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgb(30 41 59 / 0.5);
+}
+
+.onboard-form input,
+.onboard-form select,
+.onboard-form textarea {
+	font: inherit;
+	letter-spacing: normal;
+	text-transform: none;
+	font-weight: 400;
+	padding: 0.7rem 0.8rem;
+	border: 1px solid rgb(30 41 59 / 0.16);
+	border-radius: 0.2rem;
+	background: rgb(255 255 255 / 0.88);
+	color: var(--color-indigo);
+}
+
+.onboard-form textarea {
+	resize: vertical;
+	min-height: 5.5rem;
+}
+
+.onboard-form__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+
+.onboard-form__chip {
+	appearance: none;
+	padding: 0.45rem 0.7rem;
+	border: 1px solid rgb(30 41 59 / 0.18);
+	border-radius: 0.2rem;
+	background: transparent;
+	font-size: 0.78rem;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	font-weight: 500;
+	color: var(--color-indigo);
+	cursor: pointer;
+}
+
+.onboard-form__chip--on {
+	border-color: var(--color-burnt);
+	color: var(--color-burnt);
+	background: rgb(194 65 12 / 0.06);
+}
+
+.onboard-form__submit {
+	appearance: none;
+	margin-top: 0.35rem;
+	padding: 0.9rem 1.1rem;
+	border: none;
+	border-radius: 0.2rem;
+	background: var(--color-indigo);
+	color: var(--color-cream);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.onboard-form__submit:disabled {
+	opacity: 0.65;
+	cursor: wait;
+}
+
+.onboard-form__hint {
+	margin: 0;
+	font-size: 0.75rem;
+	font-weight: 400;
+	letter-spacing: normal;
+	text-transform: none;
+	color: rgb(30 41 59 / 0.55);
+}
+
+.onboard-form__skip {
+	margin: 0.85rem 0 0;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	letter-spacing: normal;
+	text-transform: none;
+	line-height: 1.5;
+	color: rgb(30 41 59 / 0.55);
+	text-align: center;
+}
+
+.onboard-form__skip a {
+	color: var(--color-burnt);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+@media (min-width: 560px) {
+	.onboard-form__row--2 {
+		grid-template-columns: 1fr 1fr;
+	}
+}

@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build / SvelteKit
+.svelte-kit/
+build/
+dist/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs / coverage
+*.log
+coverage/
+
+# Local Overpass cache / import summaries
+.data/
+
+.cursor/
+*.canvas.tsx
+
