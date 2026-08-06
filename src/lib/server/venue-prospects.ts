@@ -15,18 +15,122 @@ export type VenueProspectRow = Database['public']['Tables']['venue_prospects']['
 
 const PROTECTED_STATUSES: VenueProspectLifecycle[] = ['verified', 'claim_pending'];
 
+const PAGE_SIZE_DEFAULT = 50;
+
+export type ListProspectsOpts = {
+	status?: VenueProspectLifecycle | VenueProspectLifecycle[];
+	/** Name / address / postcode / locality contains */
+	q?: string;
+	/** A-Z, or `#` for names not starting with A-Z */
+	letter?: string;
+	limit?: number;
+	offset?: number;
+};
+
+export type ListProspectsResult = {
+	prospects: VenueProspectRow[];
+	total: number;
+	limit: number;
+	offset: number;
+};
+
+function escapeIlike(value: string): string {
+	return value.replace(/[%_\\]/g, '\\$&');
+}
+
 export async function listProspects(
 	supabase: SupabaseClient<Database>,
-	opts: { status?: VenueProspectLifecycle | VenueProspectLifecycle[]; limit?: number } = {}
-): Promise<VenueProspectRow[]> {
-	let q = supabase.from('venue_prospects').select('*').order('name').limit(opts.limit ?? 500);
+	opts: ListProspectsOpts = {}
+): Promise<ListProspectsResult> {
+	const limit = Math.min(Math.max(opts.limit ?? PAGE_SIZE_DEFAULT, 1), 200);
+	const offset = Math.max(opts.offset ?? 0, 0);
+
+	let q = supabase
+		.from('venue_prospects')
+		.select('*', { count: 'exact' })
+		.order('name')
+		.range(offset, offset + limit - 1);
+
 	if (opts.status) {
 		const statuses = Array.isArray(opts.status) ? opts.status : [opts.status];
 		q = q.in('lifecycle_status', statuses);
 	}
-	const { data, error } = await q;
+
+	const letter = opts.letter?.trim().toUpperCase() ?? '';
+	if (letter === '#') {
+		/* Names that do not start with A-Z */
+		q = q.not('name', 'match', '^[A-Za-z]');
+	} else if (/^[A-Z]$/.test(letter)) {
+		q = q.ilike('name', `${letter}%`);
+	}
+
+	const search = opts.q?.trim() ?? '';
+	if (search) {
+		const safe = escapeIlike(search).replace(/,/g, ' ');
+		const pattern = `"%${safe}%"`;
+		q = q.or(
+			`name.ilike.${pattern},postcode.ilike.${pattern},locality.ilike.${pattern},address.ilike.${pattern}`
+		);
+	}
+
+	const { data, error, count } = await q;
 	if (error) throw new Error(error.message);
-	return data ?? [];
+	return {
+		prospects: data ?? [],
+		total: count ?? 0,
+		limit,
+		offset
+	};
+}
+
+export async function createManualProspect(
+	supabase: SupabaseClient<Database>,
+	input: {
+		name: string;
+		latitude: number;
+		longitude: number;
+		category?: string | null;
+		address?: string | null;
+		locality?: string | null;
+		postcode?: string | null;
+		website?: string | null;
+		phone?: string | null;
+		admin_notes?: string | null;
+		publish?: boolean;
+	}
+): Promise<VenueProspectRow> {
+	const name = input.name.trim();
+	if (!name) throw new Error('Name is required');
+	if (!Number.isFinite(input.latitude) || !Number.isFinite(input.longitude)) {
+		throw new Error('Latitude and longitude are required');
+	}
+
+	const now = new Date().toISOString();
+	const sourceId = `manual:${crypto.randomUUID()}`;
+	const { data, error } = await supabase
+		.from('venue_prospects')
+		.insert({
+			name,
+			latitude: input.latitude,
+			longitude: input.longitude,
+			category: input.category?.trim() || null,
+			address: input.address?.trim() || null,
+			locality: input.locality?.trim() || null,
+			postcode: input.postcode?.trim() || null,
+			website: input.website?.trim() || null,
+			phone: input.phone?.trim() || null,
+			admin_notes: input.admin_notes?.trim() || null,
+			source: 'manual',
+			source_record_id: sourceId,
+			lifecycle_status: input.publish ? 'unclaimed' : 'draft',
+			imported_at: now,
+			last_checked_at: now
+		})
+		.select('*')
+		.single();
+
+	if (error) throw new Error(error.message);
+	return data;
 }
 
 export async function getProspectById(
