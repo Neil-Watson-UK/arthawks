@@ -229,14 +229,13 @@
 				</article>
 
 				<article class="gateway__audience">
-					<p class="gateway__audience-eyebrow">Investors</p>
-					<h3 class="gateway__audience-title">Place-based infrastructure</h3>
+					<p class="gateway__audience-eyebrow">Art lovers</p>
+					<h3 class="gateway__audience-title">Access art in the world around you</h3>
 					<p class="gateway__audience-copy">
-						A three-sided, place-based marketplace with install truth, QR doors, Stripe commerce,
-						low-friction handover, and transparent revenue share - turning empty walls into a
-						measurable gallery network.
+						See art in your favourite places and buy it on the spot - no stuffy gallery atmosphere
+						or commissions to worry about, and more of your purchase goes to your favourite artist.
 					</p>
-					<a class="gateway__audience-link" href="/contact">Talk to us</a>
+					<a class="gateway__audience-link" href="/discover">Start exploring</a>
 				</article>
 			</div>
 		</div>
