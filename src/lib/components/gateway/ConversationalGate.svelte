@@ -198,6 +198,50 @@
 		</p>
 	</div>
 
+	<section class="gateway__summary" aria-labelledby="gateway-summary-title">
+		<div class="gateway__summary-inner">
+			<p class="gateway__summary-kicker">Who it’s for</p>
+			<h2 id="gateway-summary-title" class="gateway__summary-title">One city gallery. Three ways in.</h2>
+			<p class="gateway__summary-lede">
+				Art Hawks connects artists, rooms, and people who find art where they already gather.
+			</p>
+
+			<div class="gateway__summary-grid">
+				<article class="gateway__audience">
+					<p class="gateway__audience-eyebrow">Artists</p>
+					<h3 class="gateway__audience-title">Hang where life happens</h3>
+					<p class="gateway__audience-copy">
+						Hang in living rooms of the city. See who meets your work. Keep 70% when it sells. Stay
+						visible after the sale.
+					</p>
+					<a class="gateway__audience-link" href="/why/exhibit">Why exhibit</a>
+				</article>
+
+				<article class="gateway__audience">
+					<p class="gateway__audience-eyebrow">Venues</p>
+					<h3 class="gateway__audience-title">Walls with a pulse</h3>
+					<p class="gateway__audience-copy">
+						Fill walls with matched local art that fits your brief. Go live on the map. Earn 15% on
+						wall sales (or 5% finder’s fee under the 30-day rules). Staff verify paid pickups with a
+						QR - no app login required.
+					</p>
+					<a class="gateway__audience-link" href="/why/host">Why host</a>
+				</article>
+
+				<article class="gateway__audience">
+					<p class="gateway__audience-eyebrow">Investors</p>
+					<h3 class="gateway__audience-title">Place-based infrastructure</h3>
+					<p class="gateway__audience-copy">
+						A three-sided, place-based marketplace with install truth, QR doors, Stripe commerce,
+						low-friction handover, and transparent revenue share - turning empty walls into a
+						measurable gallery network.
+					</p>
+					<a class="gateway__audience-link" href="/contact">Talk to us</a>
+				</article>
+			</div>
+		</div>
+	</section>
+
 	<div class="gateway__atelier">
 		<div class="gateway__atelier-inner">
 			<header class="gateway__atelier-head">
@@ -548,6 +592,101 @@
 		border-bottom: 1px solid rgb(212 163 90 / 0.35);
 	}
 
+	.gateway__summary {
+		position: relative;
+		padding: 3.25rem 1.25rem 3.5rem;
+		background:
+			linear-gradient(180deg, rgb(14 24 31 / 0.92) 0%, rgb(20 32 40 / 0.98) 100%);
+		color: var(--wall);
+		border-top: 1px solid rgb(232 228 218 / 0.08);
+	}
+
+	.gateway__summary-inner {
+		width: min(100%, 64rem);
+		margin: 0 auto;
+	}
+
+	.gateway__summary-kicker {
+		margin: 0;
+		font-size: 0.625rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--pulse);
+	}
+
+	.gateway__summary-title {
+		margin: 0.55rem 0 0;
+		font-family: var(--font-display, 'Fraunces', Georgia, serif);
+		font-size: clamp(1.65rem, 4.5vw, 2.25rem);
+		font-weight: 500;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+		max-width: 18ch;
+	}
+
+	.gateway__summary-lede {
+		margin: 0.85rem 0 0;
+		max-width: 40ch;
+		font-size: 0.95rem;
+		line-height: 1.55;
+		color: rgb(232 228 218 / 0.62);
+	}
+
+	.gateway__summary-grid {
+		display: grid;
+		gap: 2rem;
+		margin-top: 2.25rem;
+	}
+
+	.gateway__audience {
+		display: grid;
+		gap: 0.55rem;
+		align-content: start;
+		padding: 0;
+		border: 0;
+		background: transparent;
+	}
+
+	.gateway__audience-eyebrow {
+		margin: 0;
+		font-size: 0.625rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: rgb(232 228 218 / 0.48);
+	}
+
+	.gateway__audience-title {
+		margin: 0;
+		font-family: var(--font-display, 'Fraunces', Georgia, serif);
+		font-size: clamp(1.2rem, 3vw, 1.4rem);
+		font-weight: 500;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+		color: var(--wall);
+	}
+
+	.gateway__audience-copy {
+		margin: 0;
+		font-size: 0.925rem;
+		line-height: 1.55;
+		color: rgb(232 228 218 / 0.68);
+		max-width: 36ch;
+	}
+
+	.gateway__audience-link {
+		margin-top: 0.35rem;
+		justify-self: start;
+		font-size: 0.6875rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--pulse);
+		text-decoration: none;
+		border-bottom: 1px solid rgb(212 163 90 / 0.35);
+	}
+
 	.gateway__atelier {
 		position: relative;
 		padding: 0 1.25rem 4.5rem;
@@ -763,6 +902,15 @@
 		.gateway__threshold {
 			gap: 3rem;
 			padding-bottom: 4.5rem;
+		}
+
+		.gateway__summary-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.75rem;
+		}
+
+		.gateway__summary {
+			padding: 3.75rem 1.5rem 4rem;
 		}
 	}
 
